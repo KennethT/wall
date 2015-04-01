@@ -1,1 +1,6 @@
-<li><%= submission.post %></li>
+<li><%= submission.post %>
+  <span id="counter-<%= submission.id %>">
+    <%= submission.like %>
+  </span>
+</li><br>
+<%= button_to "Like", counter_count_path(submission), method: :post, remote: true %>

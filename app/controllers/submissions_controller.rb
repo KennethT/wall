@@ -17,11 +17,21 @@ class SubmissionsController < ApplicationController
         format.json { render json: @submission.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def counter
+    @submission = Submission.find(params[:id])
+    @submission.like += 1
+    @submission.save
+    respond_to do |format|
+      format.js   {}
+      format.json { render json: @submission, status: :updated, location: @submission }
+    end
 
   end
 
   def submission_params
-    params.require(:submission).permit(:post)
+    params.require(:submission).permit(:post, :like)
   end
 
 end

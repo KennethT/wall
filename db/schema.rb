@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20150401193629) do
 
   create_table "submissions", force: :cascade do |t|
     t.string  "post"
-    t.integer "like"
+    t.integer "like", default: 0
   end
 
 end
