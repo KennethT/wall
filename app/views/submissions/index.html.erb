@@ -1,8 +1,13 @@
 Submit a post to this wall!
 
-<tbody>
-<% @submissions.each do |post| %>
-<tr>
-<td><%= submissions.post %></td>
+
+
+<%= form_for(@submission, remote: true) do |f| %>
+<%= f.label :post %>
+<%= f.text_field :post %> <br>
+<%= f.submit %>
 <% end %>
-</tbody>
+
+<ul id="submissions">
+<%= render @submissions %>
+</ul>
